@@ -25,7 +25,7 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              data: `$brown-main: #382E2B;`
+              data: `@import "@/assets/styles/vars/colors.scss";`
             }
           }
         ],
