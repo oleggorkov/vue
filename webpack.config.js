@@ -22,12 +22,7 @@ module.exports = {
         use: [
           'vue-style-loader',
           'css-loader',
-          {
-            loader: 'sass-loader',
-            options: {
-              data: `@import "@/assets/styles/vars/colors.scss";`
-            }
-          }
+          'sass-loader'
         ],
       },
       {
@@ -35,12 +30,7 @@ module.exports = {
         use: [
           'vue-style-loader',
           'css-loader',
-          {
-            loader: 'sass-loader',
-            options: {
-              data: `$brown-main: #382E2B;`
-            }
-          }
+          'sass-loader?indentedSyntax'
         ],
       },
       {

@@ -22,7 +22,7 @@ export default {
 
 <style lang="scss">
 
-@import "src/assets/styles/main";
+@import "src/assets/styles/vars/colors";
 
 .button {
   width: auto;
@@ -33,7 +33,7 @@ export default {
   align-items: center;
 
   background: $brown-main;
-  //color: $white;
+  color: $white;
 
   padding: 13px 30px;
 
@@ -42,7 +42,7 @@ export default {
   transition: background .25s;
 
   &:hover {
-    //background: $brown-light;
+    background: $brown-light;
   }
 }
 </style>
