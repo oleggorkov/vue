@@ -48,6 +48,11 @@ export default {
       display: block;
 
       text-decoration: none;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 21px;
+      letter-spacing: 0;
       color: $brown-main;
       white-space: nowrap;
 

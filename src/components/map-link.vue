@@ -1,19 +1,19 @@
 <template>
-  <a href="tel:+74955555555" class="phone">
-    <icon icon-name="phone"><icon-phone /></icon>
-    +7 (495) 555-55-55
+  <a href="#" class="map">
+    <icon icon-name="map"><icon-map /></icon>
+    г. Москва, ул. Расплетина, 24
   </a>
 </template>
 
 <script>
 
 import icon from "./icon";
-import IconPhone from "./icons/IconPhone";
+import IconMap from "./icons/IconMap";
 
 export default {
-  name: "phone-link",
+  name: "map-link",
   components: {
-    IconPhone,
+    IconMap,
     icon
   },
   data() {
@@ -27,7 +27,7 @@ export default {
 
 @import "src/assets/styles/vars/colors";
 
-.phone {
+.map {
   display: flex;
   justify-content: center;
   align-items: center;
