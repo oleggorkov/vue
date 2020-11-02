@@ -4,7 +4,7 @@
     v-bind:class="{'product-card__unavailable' : product_data.available === false}"
   >
     <a href="#" class="product-card__image">
-      <img :src="require('../assets/images/pictures/' + product_data.image)" alt="picture">
+      <img v-bind:src="require('../assets/images/pictures/' + product_data.image)" alt="picture">
     </a>
     <div class="product-card__footer">
       <div class="product-card__footer-name">{{ product_data.name }}</div>
@@ -45,6 +45,10 @@ export default {
 
   name: "product-card",
   props: {
+    product_data: {
+      type: Object,
+      default: () => {}
+    }
   },
   components: {
     Btn
