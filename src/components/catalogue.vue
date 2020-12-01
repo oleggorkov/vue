@@ -1,7 +1,7 @@
 <template>
   <div class="catalogue">
     <product-card
-    v-for="product in PRODUCTS"
+    v-for="product in products"
     :key="product.article"
     v-bind:product_data="product"
     @sendDataToParent="showArticleChild"
@@ -28,6 +28,40 @@ export default {
   },
   data() {
     return {
+      products: [
+        {
+          image: "birth_of_venus.png",
+          name: "«Рождение Венеры» Сандро Боттичелли",
+          price: "1 000 000 $",
+          old_price: "2 000 000 $",
+          article: "N1",
+          available: true
+        },
+        {
+          image: "last_supper.png",
+          name: "«Тайная вечеря»  Леонардо да Винчи",
+          price: "3 000 000 $",
+          old_price: null,
+          article: "№2",
+          available: true
+        },
+        {
+          image: "creation_of_adam.png",
+          name: "«Сотворение Адама» Микеланджело",
+          price: "5 000 000 $",
+          old_price: "6 000 000 $",
+          article: "№3",
+          available: true
+        },
+        {
+          image: "anatomy_lesson.png",
+          name: "«Урок анатомии»  Рембрандт",
+          price: null,
+          old_price: null,
+          article: "№4",
+          available: false
+        }
+      ]
     }
   },
   computed: {

@@ -24,7 +24,6 @@ let store = new Vuex.Store({
           return products;
         })
         .catch((error) => {
-          console.log(error)
           return error;
         })
     }
