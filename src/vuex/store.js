@@ -1,38 +1,29 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from 'axios'
 
 Vue.use(Vuex);
+let cartStorage = localStorage.getItem('cart');
 
 let store = new Vuex.Store({
   state: {
-    products: []
+    cart: cartStorage ? JSON.parse(cartStorage) : []
   },
   mutations: {
-    SET_PRODUCTS_TO_STATE: (state, products) => {
-      state.products = products;
-    }
-
+    addToCart(state, product) {
+      state.cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(state.cart));
+    },
   },
   actions: {
-    GET_PRODUCTS_FROM_API({commit}) {
-      return axios('http://localhost:3000/products', {
-        method: "GET"
-      })
-        .then((products) => {
-          commit('SET_PRODUCTS_TO_STATE', products.data);
-          return products;
-        })
-        .catch((error) => {
-          return error;
-        })
-    }
+    addToCart({commit}, product) {
+      commit('addToCart', product);
+    },
   },
   getters: {
-    PRODUCTS(state) {
-      return state.products;
+    CART(state) {
+      return state.cart;
     }
-  }
-});
+  },
+})
 
 export default store;

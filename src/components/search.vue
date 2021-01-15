@@ -3,21 +3,20 @@
     <div class="search__block">
       <input placeholder="Поиск по названию картины" type="text" class="search__block-input">
     </div>
-    <btn />
+    <button class="button">Найти
+    </button>
   </div>
 </template>
 
 <script>
 
-  import btn from '../components/btn'
-
   export default {
     name: "search",
     components: {
-      btn
     },
     data() {
-      return {}
+      return {
+      }
     }
   }
 </script>

@@ -25,7 +25,14 @@
           </div>
           <div class="product-card__footer-price-present">{{ product_data.price }}</div>
         </div>
-        <btn />
+        <button
+          class="button"
+          @click="addToCart"
+          :class="className"
+        >
+          <span class="check"></span>
+          <span>{{ product_data.title }}</span>
+        </button>
       </div>
       <div
         class="product-card__footer-info-unavailable"
@@ -38,9 +45,6 @@
 
 <script>
 
-
-
-import Btn from "./btn";
 export default {
 
   name: "product-card",
@@ -48,15 +52,32 @@ export default {
     product_data: {
       type: Object,
       default: () => {}
+    },
+    inCart: {
+      type: Boolean,
+      default: false
     }
   },
   components: {
-    Btn
-
   },
   data() {
-    return {}
+    return {
+      inBasket: this.inCart
+    }
   },
+  methods: {
+    addToCart() {
+      this.inBasket = true
+      this.$emit('addToCart', this.product_data)
+    }
+  },
+  computed: {
+    className() {
+      return {
+        'inCart': this.inBasket
+      }
+    }
+  }
 }
 
 </script>
@@ -187,5 +208,47 @@ export default {
   }
 }
 
+.button {
+  width: 112px;
+  height: 48px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: $brown-main;
+  color: $white;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0;
+  white-space: nowrap;
+
+  transition: background .25s;
+
+  &:hover {
+    background: $brown-light;
+  }
+}
+
+.disabled {
+  pointer-events: none;
+  background: #C1B4B1;
+}
+
+.inCart {
+  background: #5B3A32;
+
+  & .check {
+    width: 0.8rem;
+    height: 0.5rem;
+    border-left: 0.2rem solid #FFFFFF;
+    border-bottom: 0.2rem solid #FFFFFF;
+    transform: rotate(-45deg);
+    margin-right: 0.3rem;
+    margin-bottom: 0.2rem;
+  }
+}
 
 </style>

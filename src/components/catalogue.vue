@@ -4,7 +4,7 @@
     v-for="product in products"
     :key="product.article"
     v-bind:product_data="product"
-    @sendDataToParent="showArticleChild"
+    @addToCart="addToCart"
     />
   </div>
 </template>
@@ -15,7 +15,7 @@ import search from '../components/search';
 import ListMenu from "../components/list-menu";
 import logo from "../components/logo";
 import ProductCard from "./product-card";
-import {mapActions, mapGetters} from 'vuex'
+import axios from "axios";
 
 export default {
 
@@ -35,7 +35,8 @@ export default {
           price: "1 000 000 $",
           old_price: "2 000 000 $",
           article: "N1",
-          available: true
+          available: true,
+          title: 'Купить'
         },
         {
           image: "last_supper.png",
@@ -43,7 +44,8 @@ export default {
           price: "3 000 000 $",
           old_price: null,
           article: "№2",
-          available: true
+          available: true,
+          title: 'Купить'
         },
         {
           image: "creation_of_adam.png",
@@ -51,7 +53,8 @@ export default {
           price: "5 000 000 $",
           old_price: "6 000 000 $",
           article: "№3",
-          available: true
+          available: true,
+          title: 'Купить'
         },
         {
           image: "anatomy_lesson.png",
@@ -59,27 +62,34 @@ export default {
           price: null,
           old_price: null,
           article: "№4",
-          available: false
+          available: false,
+          title: 'Купить'
         }
-      ]
+      ],
+      cart: []
     }
   },
   computed: {
-    ...mapGetters([
-      'PRODUCTS'
-    ]),
-  },
-  methods: {
-    ...mapActions([
-      'GET_PRODUCTS_FROM_API'
-    ]),
-    showArticleChild(data) {
-      console.log(data);
+    CART() {
+      return this.$store.getters.CART;
     }
   },
-  mounted() {
-    this.GET_PRODUCTS_FROM_API()
-  }
+  methods: {
+    async addToCart(product) {
+      const promise = axios
+        .get('https://jsonplaceholder.typicode.com/posts/1')
+        .then(response => {
+          if (response.status === 200) {
+            console.log('ok');
+          }
+        })
+      product.title = 'Проверка'
+      await promise
+      this.cart.push(product);
+      await this.$store.commit('addToCart', product);
+      product.title = 'В корзине';
+    }
+  },
 }
 
 </script>
