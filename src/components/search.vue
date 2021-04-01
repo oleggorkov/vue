@@ -67,6 +67,10 @@
 
     }
   }
+
+  & .button {
+    width: 122px;
+  }
 }
 
 </style>

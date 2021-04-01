@@ -47,7 +47,7 @@ export default {
   justify-content: flex-start;
   flex: 1 0 auto;
 
-  padding: 45px 0;
+  padding: 45px 0 277px 0;
 
   &__wrapper {
     width: 100%;

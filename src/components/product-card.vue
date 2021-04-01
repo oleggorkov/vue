@@ -132,7 +132,7 @@ export default {
     justify-content: flex-start;
     align-items: center;
 
-    padding: 22px 24px 26px 24px;
+    padding: 20px 24px 26px 24px;
 
     &-name {
       width: 100%;
@@ -209,7 +209,7 @@ export default {
 }
 
 .button {
-  width: 112px;
+  width: 118px;
   height: 48px;
 
   display: flex;
